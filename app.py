@@ -1,5 +1,4 @@
 from flask import Flask,render_template,request, url_for, redirect, render_template,current_app, g,session,flash, send_from_directory,jsonify
-import sqlite3
 import click
 import os 
 from flask_sqlalchemy import SQLAlchemy

@@ -1,17 +1,11 @@
-from flask import Flask,render_template,request, url_for, redirect, render_template,current_app, g,session,flash, send_from_directory,jsonify
-import click
+from flask import Flask,render_template,request, url_for, redirect, render_template, send_from_directory
 import os 
-from flask_sqlalchemy import SQLAlchemy
 import pandas as pd 
-import difflib
 from logging.handlers import RotatingFileHandler
 import logging
-import sqlalchemy as sa
-from click import echo
 from flask import Flask
 from flask.logging import default_handler
-from flask_login import LoginManager
-from flask_sqlalchemy import SQLAlchemy
+
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = 'uploads'
@@ -32,36 +26,6 @@ app.secret_key = "az900"
 # Determine the folder of the top-level directory of this project
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
 
-
-class Config(object):
-    FLASK_ENV = 'development'
-    DEBUG = False
-    TESTING = False
-    SECRET_KEY = os.getenv('SECRET_KEY', default='BAD_SECRET_KEY')
-    # Since SQLAlchemy 1.4.x has removed support for the 'postgres://' URI scheme,
-    # update the URI to the postgres database to use the supported 'postgresql://' scheme
-    if os.getenv('DATABASE_URL'):
-        SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL').replace("postgres://", "postgresql://", 1)
-    else:
-        SQLALCHEMY_DATABASE_URI = f"sqlite:///{os.path.join(BASEDIR, 'instance', 'app.db')}"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    # Logging
-    LOG_WITH_GUNICORN = os.getenv('LOG_WITH_GUNICORN', default=False)
-
-
-class ProductionConfig(Config):
-    FLASK_ENV = 'production'
-
-
-class DevelopmentConfig(Config):
-    DEBUG = True
-
-
-class TestingConfig(Config):
-    TESTING = True
-    SQLALCHEMY_DATABASE_URI = os.getenv('TEST_DATABASE_URI',
-                                        default=f"sqlite:///{os.path.join(BASEDIR, 'instance', 'test.db')}")
-    WTF_CSRF_ENABLED = False
 
 def configure_logging(app):
     # Logging Configuration

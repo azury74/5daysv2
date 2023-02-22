@@ -1,0 +1,7 @@
+click==8.0.4
+Flask==1.1.2
+pandas==1.4.2
+roboflow==0.2.31
+SQLAlchemy==1.4.32
+Werkzeug==2.0.3
+gunicorn

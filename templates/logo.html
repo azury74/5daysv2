@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+
+        <link rel="stylesheet" href="../static/css/style_plateforme.css">   
+        <link rel="icon" type="image/png" sizes="32x32" href="../static/Images/favicon-32x32.png">
+        <title>ALLIN</title>
+    </head>
+
+    <body>
+
+    	<header>
+
+    		<div class="header">
+   				<div class="LogoHeader"><img src="../static/Images/logoblanc2.png" alt="Logo" class="Logo"> </div>
+                                <div class="NomHeader"><h1 class="NameHeader">ALLIN Platform</h1></div>
+                                
+
+   				<div class="HeaderFond"></div>
+			</div>
+    	<div class="NavEmploye">
+            
+              <a href="{{ url_for('accueil') }}"  class="lien77">Accueil</a>
+              <div class="Divider"></div>
+              <a href="{{ url_for('logo',info='None') }}"  id="enCours1" class="lien" >Logo analyser</a>    
+                 
+              
+        </div>
+    	</header>
+        
+        
+        
+        <main class="PageInfo"  style="padding-bottom:70px">
+            <div class="Info">
+                <img src="../static/Images/tm.png" alt="Logo" class="LogoProfil1">
+                <div>
+                    <h1 class="policeProfil">Prédiction de logo</h1>
+                     <h3 class="type2">Bienvenue sur votre page de prédiction de logo. Notre algorithme peut détecter à 98% de précision, la marque de votre logo. </br> Fonctionne pour : Apple, Nvidia, Intel, Google, Microsoft, IBM, Thales</h3>
+                     
+                </div>
+            </div>
+           
+            
+    
+            
+            <h2 class="txt2">Déposer votre logo : </h2>
+            
+            <div class="Divider4"></div>                        
+                    <div class="Info1">
+                    <p style="color:white;font-family:futura;margin-top:40px">Veuillez déposer un fichier sous la forme (jpeg,jpg,png). Tout autre format ne sera pas accepté !</p>
+                    
+                     {% if info!= "None" %}
+                        <p style="color:red;font-family:futura;margin-top:40px">{{info}}</p>
+                     {% endif %}       
+                    <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+                      <input type="file" name="file" style="font-family:Futura;color:white">
+                     <div class="Envoi1">
+                    
+                    <button class="button" type="submit" name="envoyer" ><span>Envoyer le/les fichiers</span></button>
+                </div>
+    </form>
+         </div>
+
+           
+
+                
+        </main>
+     
+       
+    	
+    	
+    </body>
+</html>		

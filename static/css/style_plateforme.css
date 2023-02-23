@@ -149,7 +149,8 @@ background:#4586FF;
 	font-family: Futura;
 	position: absolute;
 	left: 220px;
-	top:18px;
+	top:25px;
+    font-size:1.6em
 }
 
 .NameHeader56
@@ -340,7 +341,7 @@ background:#4586FF;
 }
 .PageInfo
 {
-   margin-top:240px;
+   margin-top:165px;
    margin-left: 140px;
    width:80%;
    padding-bottom: 60px;

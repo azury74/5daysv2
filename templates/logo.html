@@ -28,18 +28,15 @@
     }
 
     a {
-    	color: #606FC7;
+    	color: #4586FF;
     	font-weight: 600;
     }
 
-    a:hover {
-    	color: #434190;
-    }
-
+   
     i {
     	position: absolute;
     	padding: 0.75rem;
-    	color: #606FC7;
+    	color: #4586FF;
     }
 
     span.icon {
@@ -161,6 +158,7 @@
     .input__label {
     	margin-bottom: 0.5rem;
     	display: block;
+    	color:white
     }
 
     .bttn {
@@ -199,17 +197,17 @@
     }
 
     .bttn.active {
-    	background-color: #606FC7;
+    	background-color: #4586FF;
     	color: white;
     	border-width: 1px;
-    	border-color: #606FC7;
+    	border-color: #4586FF;
     }
 
     .bttn__primary {
-    	background-color: #606FC7;
+    	background-color: #4586FF;
     	color: white;
     	border-width: 1px;
-    	border-color: #606FC7;
+    	border-color: #4586FF;
     	border-radius: 0.25rem;
     	font-size: 1.125rem;
     	padding-left: 1.25rem;
@@ -302,16 +300,20 @@
 
     		<div class="header">
    				<div class="LogoHeader"><img src="../static/Images/logoblanc2.png" alt="Logo" class="Logo"> </div>
-                                <div class="NomHeader"><h1 class="NameHeader">ALLIN Platform</h1></div>
+                                <div class="NomHeader"><h1 class="NameHeader" style="color:white ;
+	font-family: Futura;
+	position: absolute;
+	left: 220px;
+	top:38px;">Analyse your logo</h1></div>
                                 
 
    				<div class="HeaderFond"></div>
 			</div>
     	<div class="NavEmploye">
             
-              <a href="{{ url_for('accueil') }}"  class="lien77">Accueil</a>
+              <a href="{{ url_for('accueil') }}"  class="lien77" style="hover:white">Accueil</a>
               <div class="Divider"></div>
-              <a href="{{ url_for('logo',info='None') }}"  id="enCours1" class="lien" >Logo analyser</a>    
+              <a href="{{ url_for('logo',info='None') }}"  id="enCours1" class="lien" style="hover:white">Logo analyser</a>    
                  
               
         </div>
@@ -320,7 +322,15 @@
         
         
         <main class="PageInfo" >
-            <form id="inputForm" style="background:white;font-family:Futura;color:black">
+        <div class="Info">
+     <img src="{{ url_for('static', filename='Images/tm.png') }}" alt="Logo" class="LogoProfil1">
+                <div>
+                    <h1 class="policeProfil" style="margin-top:25px">Formulaire de détection de logo :</h1>
+                     <h3 class="type2" style="margin-top:18px;width:80%;font-size:0.9em">Google, Microsoft, Apple, Intel, Nvidia, IBM ou Thales ? Ne cherchez plus, notre plateforme est là pour répondre à cette question. Déposez une image sur notre plateforme et celle-ci détectera les logos associés ! </h3>
+                </div>
+        </div>
+        <div class="Divider4"></div>  
+            <form id="inputForm" style="font-family:Futura;color:black">
                 <div class="header" style="display:none">
                     <div class="header__grid">
                         <img class="header__logo" src="https://uploads-ssl.webflow.com/5f6bc60e665f54545a1e52a5/6143750f1177056d60fc52d9_roboflow_logomark_inference.png" alt="Roboflow Inference">
@@ -342,65 +352,65 @@
                 <div class="content">
                     <div class="content__grid">
                         <div class="col-12-s6-m4" id="method">
-                            <label class="input__label">Upload Method</label>
+                            <label class="input__label">Méthode de chargement</label>
                             <div>
-                                <button data-value="upload" id="computerButton" class="bttn left fill active">Upload</button>
+                                <button data-value="upload" id="computerButton" class="bttn left fill active">Télécharger</button>
                                 <button data-value="url" id="urlButton" class="bttn right fill">URL</button>
                             </div>
                         </div>
 
                         <div class="col-12-m8" id="fileSelectionContainer">
-                            <label class="input__label" for="file">Select File</label>
+                            <label class="input__label" for="file">Sélectionnez un fichier</label>
                             <div class="flex">
                                 <input class="input input--left flex-1" type="text" id="fileName" disabled />
-                                <button id="fileMock" class="bttn right active">Browse</button>
+                                <button id="fileMock" class="bttn right active">Parcourir</button>
                             </div>
                             <input style="display: none;" type="file" id="file" />
                         </div>
 
                         <div class="col-12-m8" id="urlContainer">
-                            <label class="input__label" for="file">Enter Image URL</label>
+                            <label class="input__label" for="file">Entrez l'URL de l'image</label>
                             <div class="flex">
                                 <input type="text" id="url" placeholder="https://path.to/your.jpg" class="input"/><br>
                             </div>
                         </div>
 
-                        <div class="col-12-m6">
+                        <div class="col-12-m6" style="display:none">
                             <label class="input__label" for="classes">Filter Classes</label>
                             <input type="text" id="classes" placeholder="Enter class names" class="input"/><br>
                             <span class="text--small">Separate names with commas</span>
                         </div>
 
                         <div class="col-6-m3 relative">
-                            <label class="input__label" for="confidence">Min Confidence</label>
+                            <label class="input__label" for="confidence">Confiance minimum</label>
                             <div>
                                 <i class="fas fa-crown"></i>
                                 <span class="icon">%</span>
                                 <input type="number" id="confidence" value="40" max="100" accuracy="2" min="0" class="input input__icon"/></div>
                             </div>
                         <div class="col-6-m3 relative">
-                            <label class="input__label" for="overlap">Max Overlap</label>
+                            <label class="input__label" for="overlap">Chevauchement</label>
                             <div>
                                 <i class="fas fa-object-ungroup"></i>
                                 <span class="icon">%</span>
                                 <input type="number" id="overlap" value="30" max="100" accuracy="2" min="0" class="input input__icon"/></div>
                         </div>
                         <div class="col-6-m3" id="format">
-                            <label class="input__label">Inference Result</label>
+                            <label class="input__label">Résultats</label>
                             <div>
                                 <button id="imageButton" data-value="image" class="bttn left fill active">Image</button>
                                 <button id="jsonButton" data-value="json" class="bttn right fill">JSON</button>
                             </div>
                         </div>
                         <div class="col-12 content__grid" id="imageOptions">
-                            <div class="col-12-s6-m4" id="labels">
+                            <div class="col-12-s6-m4" id="labels" style="display:none">
                                 <label class="input__label">Labels</label>
                                 <div>
                                     <button class="bttn left">Off</button>
                                     <button data-value="on" class="bttn right active">On</button>
                                 </div>
                             </div>
-                            <div class="col-12-s6-m4" id="stroke">
+                            <div class="col-12-s6-m4" id="stroke" style="display:none">
                                 <label class="input__label">Stroke Width</label>
                                 <div>
                                     <button data-value="1" class="bttn left">1px</button>
@@ -411,14 +421,13 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <button type="submit" value="Run Inference" class="bttn__primary">Run Inference</button>
+                            <button type="submit" value="Run Inference" class="bttn__primary">Envoyer l'image</button>
                         </div>
                     </div>
                     <div class="result" id="resultContainer">
                         <div class="divider"></div>
                         <div class="result__header">
-                            <h3 class="headline">Result</h3>
-                            <a href="#">Copy Code</a>
+                            <h3 class="headline" style="color:white">Résultats</h3>
                         </div>
                         <pre id="output" class="codeblock"/> here is your json </pre>
                     </div>
@@ -665,7 +674,14 @@ var resizeImage = function(base64Str) {
         </main>
      
        
-    	
+    	<footer class="footer5" style="padding-bottom:20px">
+                
+    		<div class="footerContenu1">
+   			<div class="LogoFooter"><p><img src="{{ url_for('static', filename='Images/logoblanc2.png') }}" alt="Logo1" class="logo1" style="margin-top:15px"> </p></div>
+            <div class="MailFooter"><h2 class="TextFooter"><br /> 67 Bd de Brandebourg, 94200 Ivry-sur-Seine<br />01 56 20 62 62<br />Nous contacter :<a href="mailto:directeur@teamsprint.fr">Envoyer un mail</a></h2></div>
+		</div>
+
+    	</footer>
     	
     </body>
 </html>		

@@ -1,4 +1,4 @@
-# Car dataset explorer
+#Logo Detector
 
 ## Authors : 
   - Louis LAURENT
